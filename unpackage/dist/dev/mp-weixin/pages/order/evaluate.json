@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "cu-rate": "/colorui/components/cu-rate"
+  }
+}

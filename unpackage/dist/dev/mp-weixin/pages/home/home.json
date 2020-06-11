@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "校园外卖",
+  "usingComponents": {
+    "my-list": "/components/list/list"
+  }
+}

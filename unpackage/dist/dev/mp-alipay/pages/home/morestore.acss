@@ -1,0 +1,94 @@
+
+.cu-load::before {
+		font-family: "cuIcon";
+		display: inline-block;
+		margin-right: 6rpx;
+		font-size: 36rpx;
+}
+.cu-load.loading::after {
+		content: "加载中...";
+		font-size: 32rpx;
+}
+.cu-load.erro::before {
+		font-size: 36rpx;
+		content: "\e658";
+}
+.cu-load.over::after {
+		content: "定位失败，点击重试";
+		font-size: 32rpx;
+}
+.location-img {
+		width: 40rpx;
+		height: 40rpx;
+}
+
+	/* 重写轮播图样式 */
+.swiper {
+		height: 200rpx;
+		width: 690rpx;
+		margin: 0rpx auto;
+}
+
+	/* 自定义标签 */
+.my-tag {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-webkit-flex-direction: row;
+		        flex-direction: row;
+		-webkit-flex-wrap: wrap;
+		        flex-wrap: wrap;
+		-webkit-box-pack: justify;
+		-webkit-justify-content: space-between;
+		        justify-content: space-between;
+		padding-top: 10px;
+}
+
+	/* ==================
+         模态窗口
+ ==================== */
+.cu-modal.show {
+		opacity: 1;
+		-webkit-transition-duration: 0.3s;
+		        transition-duration: 0.3s;
+		-webkit-transform: scale(1);
+		        transform: scale(1);
+		overflow-x: hidden;
+		overflow-y: auto;
+		pointer-events: auto;
+}
+.cu-dialog {
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: auto;
+		margin-right: auto;
+		width: 750rpx;
+		max-width: 100%;
+		background-color: #f8f8f8;
+		border-radius: 10rpx;
+		overflow: hidden;
+}
+.cu-modal.drawer-modal .cu-dialog {
+		height: 500rpx;
+		width: 750rpx;
+		border-radius: 0;
+		margin: initial;
+		-webkit-transition-duration: 0.3s;
+		        transition-duration: 0.3s;
+}
+.cu-modal.drawer-modal.justify-start .cu-dialog {
+		-webkit-transform: translateY(-100%);
+		        transform: translateY(-100%);
+}
+.cu-modal.drawer-modal.justify-end .cu-dialog {
+		-webkit-transform: translateY(100%);
+		        transform: translateY(100%);
+}
+.cu-modal.drawer-modal.show .cu-dialog {
+		-webkit-transform: translateY(0%);
+		        transform: translateY(0%);
+}
+

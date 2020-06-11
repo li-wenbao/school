@@ -1,0 +1,56 @@
+
+.cu-load::before {
+	font-family: "cuIcon";
+	display: inline-block;
+	margin-right: 6rpx;
+	font-size: 36rpx;
+}
+.cu-load.loading::after {
+	content: "加载中...";
+	font-size: 32rpx;
+}
+.cu-load.erro::before {
+	font-size: 36rpx;
+	content: "\e658";
+}
+.cu-load.over::after {
+	content: "定位失败，点击重试";
+	font-size: 32rpx;
+}
+.location-img {
+	width: 40rpx;
+	height: 40rpx;
+}
+
+/* 重写轮播图样式 */
+.swiper {
+	height: 200rpx;
+	width: 690rpx;
+	margin: 0rpx auto;
+}
+
+/* 自定义标签 */
+.my-tag {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	padding-top: 10px;
+}
+.rag{
+	text-align: center;
+	background: red;
+	position: absolute;
+	bottom: 0;
+	z-index: 999;
+	width:160rpx;
+}
+

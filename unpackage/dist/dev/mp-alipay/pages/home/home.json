@@ -1,0 +1,7 @@
+{
+  "defaultTitle": "校园外卖",
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom",
+    "my-list": "/components/list/list"
+  }
+}

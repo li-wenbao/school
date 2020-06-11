@@ -1,0 +1,13 @@
+
+.cu-rate-icon {
+  position: relative;
+  display: inline-block;
+}
+.cu-rate-icon-on {
+  line-height: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+

@@ -1,0 +1,27 @@
+
+.face {
+	width: 130rpx;
+	height: 130rpx;
+	overflow: hidden;
+	border-radius: 50%;
+	border: 10rpx rgba(225, 225, 225, .8) solid;
+}
+.weixin-face {
+width: 100rpx;
+height: 100rpx;
+overflow: hidden;
+border-radius: 50%;
+border: 10rpx rgba(225, 225, 225, .8) solid;
+}
+
+/* 解决支付宝小程序不显示小图标 */
+
+
+
+
+
+
+
+
+
+

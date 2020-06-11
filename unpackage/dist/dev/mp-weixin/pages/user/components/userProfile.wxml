@@ -1,0 +1,1 @@
+<view class=" bg-blue flex"><open-data class="weixin-face margin-left-sm margin-bottom-sm" type="userAvatarUrl"></open-data><view class="margin-left-sm margin-top-sm"><open-data type="userNickName"></open-data></view></view>

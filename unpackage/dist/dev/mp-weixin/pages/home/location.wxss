@@ -1,0 +1,20 @@
+
+.cu-load::before {
+  font-family: "cuIcon";
+  display: inline-block;
+  margin-right: 6rpx;
+  font-size: 28rpx;
+}
+.cu-load.loading::after {
+  content: "定位中...";
+  font-size: 28rpx;
+}
+.cu-load.erro::before {
+  font-size: 28rpx;
+  content: "\e658";
+}
+.cu-load.over::after {
+  content: "定位失败，重新定位";
+  font-size: 28rpx;
+}
+

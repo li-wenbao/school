@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "城市定位",
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  }
+}

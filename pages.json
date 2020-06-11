@@ -1,0 +1,236 @@
+{
+	"pages": [
+		
+		
+		// 首页开始
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationBarTitleText": "校园外卖"
+			}
+		},
+		
+		{
+			"path": "pages/store/index",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		
+		{
+			"path": "pages/index/store",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		
+		// 支付
+		{
+			"path": "pages/order/pay",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		
+		// 提交
+		{
+			"path": "pages/order/preview",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		
+		
+		{
+			"path": "pages/home/paymentest",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+
+		{
+			"path": "pages/home/payment",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/home/location",
+			"style": {
+				"navigationBarTitleText": "选择收货地址"
+			}
+		},
+		{
+			"path": "pages/home/store",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/home/morestore",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+
+		{
+			"path": "pages/home/search",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/order/home",
+			"style": {
+				"navigationBarTitleText": "订单"
+			}
+		},
+		{
+			"path": "pages/order/details",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/order/evaluate",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/order/refund",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		// 订单页面结束
+		// 用户页面
+		{
+			"path": "pages/user/user",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		
+		
+		{
+			// 重写地址部分
+			"path": "pages/user/address/address",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/user/address/addAddress",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/user/address/fixAddress",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		
+		
+		{
+			"path": "pages/user/address",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/user/addAddress",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/user/fixAddress",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/user/map",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/user/city",
+			"style": {
+				"navigationBarTitleText": "城市定位"
+			}
+		},
+		{
+			"path": "pages/user/favor",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/user/help",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/user/accModification",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		}
+		// 
+		// 商铺页面
+		
+    ],
+	"globalStyle": {
+		"mp-alipay": {
+			"titleBarColor": "#0081ff",
+			"defaultTitle": "",
+			"transparentTitle": "always",
+			"allowsBounceVertical": "NO"
+			
+		},
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "ld-shop",
+		"navigationBarBackgroundColor": "#007AFF",
+		"backgroundColor": "#F8F8F8",
+		"navigationStyle": "custom"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#7A7E83",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/home/home",
+				"iconPath": "static/tabbar/home.png",
+				"selectedIconPath": "static/tabbar/home_cur.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/order/home",
+				"iconPath": "static/tabbar/order.png",
+				"selectedIconPath": "static/tabbar/order_cur.png",
+				"text": "订单"
+			},
+			{
+				"pagePath": "pages/user/user",
+				"iconPath": "static/tabbar/user.png",
+				"selectedIconPath": "static/tabbar/user_cur.png",
+				"text": "我的"
+			}
+		]
+	},
+	"condition": {
+		"current": 0,
+		"list": [{
+			"name": "",
+			"path": "",
+			"query": ""
+		}]
+	}
+}

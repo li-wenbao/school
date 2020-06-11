@@ -1,0 +1,67 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/store/index",
+    "pages/index/store",
+    "pages/order/pay",
+    "pages/order/preview",
+    "pages/home/paymentest",
+    "pages/home/payment",
+    "pages/home/location",
+    "pages/home/store",
+    "pages/home/morestore",
+    "pages/home/search",
+    "pages/order/home",
+    "pages/order/details",
+    "pages/order/evaluate",
+    "pages/order/refund",
+    "pages/user/user",
+    "pages/user/address/address",
+    "pages/user/address/addAddress",
+    "pages/user/address/fixAddress",
+    "pages/user/address",
+    "pages/user/addAddress",
+    "pages/user/fixAddress",
+    "pages/user/map",
+    "pages/user/city",
+    "pages/user/favor",
+    "pages/user/help",
+    "pages/user/accModification"
+  ],
+  "subPackages": [],
+  "window": {
+    "defaultTitle": "",
+    "titleBarColor": "#0081ff",
+    "backgroundColor": "#F8F8F8",
+    "transparentTitle": "always",
+    "allowsBounceVertical": "NO"
+  },
+  "tabBar": {
+    "textColor": "#7A7E83",
+    "selectedColor": "#7A7E83",
+    "backgroundColor": "#ffffff",
+    "items": [
+      {
+        "pagePath": "pages/home/home",
+        "name": "首页",
+        "icon": "static/tabbar/home.png",
+        "activeIcon": "static/tabbar/home_cur.png"
+      },
+      {
+        "pagePath": "pages/order/home",
+        "name": "订单",
+        "icon": "static/tabbar/order.png",
+        "activeIcon": "static/tabbar/order_cur.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "name": "我的",
+        "icon": "static/tabbar/user.png",
+        "activeIcon": "static/tabbar/user_cur.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  }
+}

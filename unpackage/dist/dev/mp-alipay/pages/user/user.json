@@ -1,0 +1,7 @@
+{
+  "defaultTitle": "",
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom",
+    "user-profile": "/pages/user/components/userProfile"
+  }
+}

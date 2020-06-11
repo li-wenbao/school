@@ -1,0 +1,146 @@
+	.header {
+		position: relative;
+		z-index: 1
+	}
+
+	.bgImage {
+		background-size: 100% 100%;
+		position: relative;
+	}
+
+	.mask {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		background: rgba(12, 12, 12, 0.4);
+	}
+
+	.top {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		z-index: 9999;
+	}
+
+	/* 重写下划线样式:缩短,加粗 */
+	.nav .cu-item.cur {
+		border-bottom: 8rpx solid;
+	}
+
+	.VerticalNav.nav {
+		width: 160rpx;
+		white-space: initial;
+	}
+
+	.VerticalNav.nav .cu-item {
+		width: 100%;
+		text-align: center;
+		margin: 0;
+		border: none;
+		height: 80rpx;
+		position: relative;
+	}
+
+	.flexd {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.my-tag {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		align-content: space-between;
+	}
+
+	/* 解决支付宝小程序不显示小图标 */
+	/*  #ifdef  MP-ALIPAY  */
+	.cu-list.menu>.cu-item .content>image {
+		width: 48rpx;
+		height: 48rpx;
+	}
+
+	/*  #endif  */
+
+
+	/* 新添加的 */
+
+	/* 重写按钮宽度 */
+
+	.current {
+		position: relative;
+		z-index: 0;
+		background-color: #fff;
+		color: #00A0DC;
+	}
+
+	.menu-wrapper {
+		text-align: center;
+		width: 22%;
+		display: flex;
+		flex-direction: column;
+		background: #f3f5f7;
+
+	}
+
+	.menu-item {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 50px;
+	}
+
+	.allcount {
+		position: absolute;
+		right: 0px;
+		top: 8px;
+		display: inline-block;
+		padding: 0 5px;
+		font-size: 20upx;
+		line-height: 16px;
+		font-weight: 400;
+		border-radius: 10px;
+		background-color: #f01414;
+		color: #ffffff;
+	}
+
+	.foods-wrapper {
+		margin-left: 4px;
+		width: 78%;
+	}
+
+	.food,
+	.food-btm,
+	.content {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.food-title {
+		padding: 2px 0;
+	}
+
+	.food-info {
+		margin-left: 10px;
+		margin-right: 16px;
+		display: flex;
+		flex-direction: column;
+		flex: 2;
+	}
+
+	.food-btm {
+		justify-content: space-between;
+
+	}
+
+	.food-price {
+		color: #f01414;
+		font-size: 16px;
+	}

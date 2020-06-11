@@ -1,0 +1,73 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/store/index",
+    "pages/index/store",
+    "pages/order/pay",
+    "pages/order/preview",
+    "pages/home/paymentest",
+    "pages/home/payment",
+    "pages/home/location",
+    "pages/home/store",
+    "pages/home/morestore",
+    "pages/home/search",
+    "pages/order/home",
+    "pages/order/details",
+    "pages/order/evaluate",
+    "pages/order/refund",
+    "pages/user/user",
+    "pages/user/address/address",
+    "pages/user/address/addAddress",
+    "pages/user/address/fixAddress",
+    "pages/user/address",
+    "pages/user/addAddress",
+    "pages/user/fixAddress",
+    "pages/user/map",
+    "pages/user/city",
+    "pages/user/favor",
+    "pages/user/help",
+    "pages/user/accModification"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "ld-shop",
+    "navigationBarBackgroundColor": "#007AFF",
+    "backgroundColor": "#F8F8F8",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#7A7E83",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "static/tabbar/home.png",
+        "selectedIconPath": "static/tabbar/home_cur.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/order/home",
+        "iconPath": "static/tabbar/order.png",
+        "selectedIconPath": "static/tabbar/order_cur.png",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "static/tabbar/user.png",
+        "selectedIconPath": "static/tabbar/user_cur.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  }
+}

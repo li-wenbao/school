@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "uni-popup": "/components/uni-popup/uni-popup",
+    "cu-rate": "/colorui/components/cu-rate",
+    "cu-cart": "/colorui/components/cu-cart"
+  }
+}
