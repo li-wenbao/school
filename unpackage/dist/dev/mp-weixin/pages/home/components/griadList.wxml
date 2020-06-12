@@ -1,0 +1,1 @@
+<view class="cu-list grid no-border col-4"><block wx:for="{{cuIconList}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view class="cu-item" data-id="{{item.name}}" data-event-opts="{{[['tap',[['goToMoreStore',['$event']]]]]}}" bindtap="__e"><image style="height:70rpx;" src="{{item.url}}" mode="aspectFit"></image><text>{{item.name}}</text></view></block></view>

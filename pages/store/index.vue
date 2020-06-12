@@ -5,8 +5,8 @@
 			<flyInCart ref="inCart" :cartBasketRect="cartBasketRect"></flyInCart>
 			<!-- 头部 -->
 			<view class="header" :style="[{height:CustomBar + 120 + 'px'}]">
-				<view class="bgImage" style="width:100%;" :style="[{height:CustomBar + 30 + 'px'}]" :class="store.bgImage?'':'bg-blue'">
-					<image v-if="store.bgImage" :src="store.bgImage" style="width:100%;" :style="[{height:CustomBar + 30 + 'px'}]" />
+				<view class="bgImage" style="width:100%;" :style="[{height:CustomBar + 30 + 'px'}]" :class="storeData.logoId?'':'bg-blue'">
+					<image v-if="storeData.logoId" :src="imgurl + storeData.logoId + '.json'" style="width:100%;" :style="[{height:CustomBar + 30 + 'px'}]" />
 					<view class="mask"></view>
 				</view>
 				<view class="bg-white" style="height:90px;width:100%"></view>
@@ -21,24 +21,24 @@
 					<view class="margin-lr margin-top-sm padding-sm bg-white shadow radius10" style="width:690rpx">
 						<view class="flex justify-between">
 							<view style="width:100rpx;height:100rpx">
-								<image style="width:100rpx;height:100rpx;border-radius:8rpx; " lazy-load="true" mode="aspectFit" :src="store.imgUrl" />
+								<image style="width:100rpx;height:100rpx;border-radius:8rpx; " mode="aspectFit" :src="imgurl + storeData.logoId + '.json'" />
 							</view>
 							<view class="margin-left-sm" style="width:410rpx">
-								<view class="text-black text-bold text-xl">{{store.name}}</view>
+								<view class="text-black text-bold text-xl">{{storeData.name}}</view>
 								<view class="text-grey text-sm padding-tb-xs">
 									<text class="cuIcon-favorfill text-orange"></text>
-									<text>{{store.grade[0]}}</text>
-									<text class="margin-lr-sm">|</text>
-									<text>配送约{{store.averageTime}}分钟</text>
+									<text>{{storeData.merchantStat}}</text>
+									<!-- <text class="margin-lr-sm">|</text> -->
+									<!-- <text>配送约{{store.averageTime}}分钟</text>-->
 								</view>
 							</view>
 							<view class="text-center" style="width:120rpx">
 								<button class="cu-btn round line-black" role="button" aria-disabled="false">关注</button>
 							</view>
 						</view>
-						<view class="text-grey text-sm margin-top-xs">
+						<!-- <view class="text-grey text-sm margin-top-xs">
 							<text>公告：{{store.notice}}</text>
-						</view>
+						</view> -->
 					</view>
 				</view>
 			</view>
@@ -164,7 +164,7 @@
 					<view class="cu-item">
 						<view class="content">
 							<image src="/static/menu/location.png" class="png" mode="aspectFit" />
-							<text class="text-grey">昆明理工大学怡园风味食堂二楼103档口</text>
+							<text class="text-grey">{{storeData.address}}</text>
 						</view>
 					</view>
 					<view class="cu-item margin-top-sm arrow">
@@ -176,7 +176,7 @@
 					<view class="cu-item margin-top-sm">
 						<view class="content">
 							<image src="/static/menu/service.png" class="png" mode="aspectFit" />
-							<text class="text-grey">配送服务：由xx提供配送服务</text>
+							<text class="text-grey">配送服务：由一点校园提供配送服务</text>
 						</view>
 					</view>
 					<view class="cu-item">
@@ -332,6 +332,7 @@
 				</view>
 			</uni-popup>
 		</view>
+		
 	</view>
 </template>
 
@@ -339,7 +340,18 @@
 	import hxNumberBox from "@/components/uni-number-box/uni-number-box.vue"; //加减	
 	import flyInCart from '@/components/flyInCart.vue' //加入购物车动画组件
 	import testData from "@/common/testdata.js"; //引入测试数据
-	// var statusBarHeight = uni.getSystemInfoSync().statusBarHeight;
+	// 引入接口
+	import {
+		listing
+	} from '../../api/api.js'
+	// 引入请求地址
+	import {
+		getShop,
+		imgurl
+	} from '../../api/request.js'
+	var {
+		log
+	} = console
 	export default {
 		components: {
 			hxNumberBox,
@@ -347,28 +359,21 @@
 		},
 		data() {
 			return {
-				store: {
-					id: 1,
-					name: "豚骨拉面(怡园风味)",
-					notice: "新用户即可领取5元无门槛红包",
-					imgUrl: "/static/ddd.jpg",
-					bgImage: "/static/bg.jpg",
-					grade: [4.8, 4.7, 3.6, 4.9],
-					sales: 258,
-					basePrice: 15,
-					distribution: 3,
-					averageConsume: 21,
-					averageTime: 30
-				},
-				tabList: ["点菜","商家"],
+				// 上个页面传来的id
+				storeId: "",
+				
+				imgurl: imgurl,
+				//商家信息
+				storeData: {},
+
+				tabList: ["点菜", "商家"],
 				verticalNavTop: 0,
 				CustomBar: this.CustomBar,
 				tabCur: 0,
 				vTabCur: 0,
 				mainCur: 0,
 				pageScroll: {},
-				//商家信息
-				storeData: [],
+
 				//商品列表
 				goodsList: [],
 				//商品分类信息列表
@@ -422,18 +427,19 @@
 		},
 		async onLoad(option) {
 			const that = this
-			uni.showLoading({
-				title: '加载中'
-			});
+			// uni.showLoading({
+			// 	title: '加载中'
+			// });
 
+			this.storeId = option.id
+			this.storefun();
 
 			//模拟请求数据
 			setTimeout(() => {
 				//商家信息
-				that.storeData = testData.storeData,
-
-					//商品列表
-					that.goodsList = testData.goodsData;
+				// that.storeData = testData.storeData,
+				//商品列表
+				that.goodsList = testData.goodsData;
 				// console.log("商品列表", JSON.stringify(that.goodsList))
 
 				//商品分类信息列表
@@ -449,64 +455,34 @@
 			}, 500)
 
 		},
-		onReady() {
-			const that = this
-			let sysInfo = uni.getSystemInfoSync();
-			let q = uni.createSelectorQuery()
-			setTimeout(function() {
-				q.select('.cart').boundingClientRect(data => {
-					that.cartBasketRect = data
-				}).exec();
-			}, 100)
-			// that.calcSize();
-		},
-		onBackPress(event) {
 
-			if (this.showFormBox) {
-				this.hiddenForm()
-				return true
-			}
-			if (!this.isBack) {
-				this.$refs.popup.close()
-				return true
-			}
-
-		},
-		onShow() {
-			this.init();
-		},
-		mounted() {
-			let that = this
-
-		},
-		watch: {
-			showStoreBox(val, oldVal) {
-				if (val == true) {
-					this.showStoreBoxFunc();
-				} else {
-					this.hiddenStoreBoxFunc();
-				}
-			}
-		},
-
-		computed: {
-			bgImageHeight() {
-				let CustomBar = this.CustomBar;
-				let bgImage = this.store.bgImage;
-				return `height:${CustomBar + 30}px;`;
-			},
-			barHeight() {
-				let StatusBar = this.StatusBar;
-				let CustomBar = this.CustomBar;
-				return `height:${CustomBar}px;padding-top:${StatusBar}px;`;
-			},
-			style() {
-				let CustomBar = this.CustomBar;
-				return `height:calc(100vh - ${CustomBar}px - 120px - 50px);`;
-			},
-			// 点击获取数据
-		},
 		methods: {
+			// 请求数据
+			storefun() {
+				let data = {
+					id: this.storeId
+				}
+				Promise.all([listing(getShop, data)])
+					.then((res) => {
+						// 商家介绍
+						// this.busidata = res[0].data[0]
+						// 商家信息
+						this.storeData = res[0].data
+						// log("商家信息+++", this.storeData)
+						
+						// 商品信息列表
+						//商品分类信息列表
+						// this.categoryList = this.storeData.categoryData;
+						// 评论
+						// log(res[2].data)
+
+						
+					})
+					.catch((err) => {
+						log(err)
+					})
+			},
+			
 			init() {
 				let that = this;
 				//假设这是从后台获取的商品数据
@@ -939,7 +915,6 @@
 				that.hideShoppingCar();
 			},
 			hrefGoodsInfo(id) {
-
 				this.navTo('/pages/product/product?id=' + id)
 			},
 			//拨打电话
@@ -963,6 +938,62 @@
 					delta: 1
 				});
 			},
+		},
+
+		onReady() {
+			const that = this
+			let sysInfo = uni.getSystemInfoSync();
+			let q = uni.createSelectorQuery()
+			setTimeout(function() {
+				q.select('.cart').boundingClientRect(data => {
+					that.cartBasketRect = data
+				}).exec();
+			}, 100)
+			// that.calcSize();
+		},
+		onBackPress(event) {
+			if (this.showFormBox) {
+				this.hiddenForm()
+				return true
+			}
+			if (!this.isBack) {
+				this.$refs.popup.close()
+				return true
+			}
+
+		},
+		onShow() {
+			this.init();
+		},
+		mounted() {
+			let that = this
+
+		},
+		watch: {
+			showStoreBox(val, oldVal) {
+				if (val == true) {
+					this.showStoreBoxFunc();
+				} else {
+					this.hiddenStoreBoxFunc();
+				}
+			}
+		},
+
+		computed: {
+			bgImageHeight() {
+				let CustomBar = this.CustomBar;
+				return `height:${CustomBar + 30}px;`;
+			},
+			barHeight() {
+				let StatusBar = this.StatusBar;
+				let CustomBar = this.CustomBar;
+				return `height:${CustomBar}px;padding-top:${StatusBar}px;`;
+			},
+			style() {
+				let CustomBar = this.CustomBar;
+				return `height:calc(100vh - ${CustomBar}px - 120px - 50px);`;
+			},
+			// 点击获取数据
 		}
 	}
 </script>

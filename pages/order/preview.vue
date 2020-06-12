@@ -1,7 +1,9 @@
 <template>
 	<view class="page">
 		<cu-custom :bgColor="'bg-blue'" :isBack="true">
-			<block slot="backText">提交订单</block>
+			<block slot="content">
+				提交订单
+			</block>
 		</cu-custom>
 		<view class="head tab-right-active">
 			<view class="tab-box" v-if="tabIndex>0">
@@ -18,7 +20,32 @@
 			</view>
 			<view class="container head-bottom" :class="{'selectOne': tabIndex == 1,'selectTow':tabIndex == 2}">
 				<view class="tab" v-if="tabIndex == 2">
-					2
+					<view class="padding-sm">
+						<view class="text-xl text-bold">
+							云南省昆明市盘龙区联盟街道
+						</view>
+						<view class="margin-top-sm text-sm">
+							距离您2.4km
+						</view>
+						<view class="flex margin-top-xs">
+							<view class="margin-right-sm">
+								<view class="text-gray">
+									到店自取
+								</view>
+								<view class="text-black">
+									19:28
+								</view>
+							</view>
+							<view class="">
+								<view class="text-gray">
+									预留电话
+								</view>
+								<view class="text-black">
+									15687362610
+								</view>
+							</view>
+						</view>
+					</view>
 				</view>
 				<view class="tab" v-else>
 					<view class="t-top">

@@ -18,6 +18,12 @@
 		props:{
 			cuIconList:Array
 		},
+		methods:{
+			goToMoreStore(e){
+				this.$emit("goToMoreStore",e)
+			}
+			
+		}
 	}
 	
 </script>

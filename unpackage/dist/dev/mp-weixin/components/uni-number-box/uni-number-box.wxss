@@ -1,4 +1,4 @@
-.hx-numbox.data-v-44bb8210 {
+.hx-numbox.data-v-3f89888d {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -12,14 +12,14 @@
   -webkit-justify-content: flex-end;
           justify-content: flex-end;
 }
-.hx-numbox__value.data-v-44bb8210 {
+.hx-numbox__value.data-v-3f89888d {
   width: 42rpx;
   height: 42rpx;
   text-align: center;
   font-size: 32rpx;
   color: #222222;
 }
-.hx-numbox__minus.data-v-44bb8210 {
+.hx-numbox__minus.data-v-3f89888d {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -44,7 +44,7 @@
   border: 1.4px solid #0078ff;
   color: #0078ff;
 }
-.hx-numbox__plus.data-v-44bb8210 {
+.hx-numbox__plus.data-v-3f89888d {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -69,7 +69,7 @@
   border-radius: 50%;
   color: #FFFFFF;
 }
-.hx-numbox--disabled.data-v-44bb8210 {
+.hx-numbox--disabled.data-v-3f89888d {
   color: #c0c0c0;
   text-align: center;
 }

@@ -1,5 +1,4 @@
 <template name="HM-messages">
-	
 	<view class="HMmessages" :class="[isShow?'show':'hide',isStatus?'status':'',isTransparent?'transparent':'',isTransparentH5?'transparentH5':'']"  :style="{backgroundColor:background}">
 		<view class="ico" v-if="icon!='none'">
 			<view class="icon" :class="icon" :style="{color:iconColor}"></view>

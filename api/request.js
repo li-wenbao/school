@@ -1,13 +1,17 @@
 // 公用地址
 let url = 'http://192.168.1.107:8888/tof-web/appModel/'
 
+let imgurl = "http://192.168.1.107:8888/tof-web/download/"
 
 // 附近商家
 let wxshopurl = `${url}forshop/wxshop`
-let getShopAll = `${url}getShopAll.json`
+let getAll = `${url}getAll.json`
+
+// 商品数据-详情
+let getShop = `${url}getShopByshopId.json`
 
 // 综合排序
-let startingurl = `${url}appModel/getShopAll.json`
+let startingurl = `${url}getShopAll.json`
 
 
 // 为你优选
@@ -25,8 +29,7 @@ let discussurl = `${url}message/discuss`
 // 商家介绍
 let shopurl = `${url}forshop/shop`
 
-// 商品数据
-let getdishesurl = `${url}forshop/getdishes`
+
 
 // 登录
 let wxloginurl = `${url}wxuser/wxlogin`
@@ -38,5 +41,5 @@ let wxpayingurl = `${url}wxpay/wxpaying`
 let commenturl = `${url}message/comment`
 
 
-export{getShopAll,getpreferurl,wxshopurl,startingurl,multipleurl,searchurl,discussurl,shopurl,getdishesurl,
-wxloginurl,wxpayingurl,commenturl}
+export{getAll,getpreferurl,getShop,wxshopurl,startingurl,multipleurl,searchurl,discussurl,shopurl,
+wxloginurl,wxpayingurl,commenturl,imgurl}

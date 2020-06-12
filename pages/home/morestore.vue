@@ -74,8 +74,8 @@
 		<!-- 商家列表开始  -->
 		<scroll-view class="bg-white" @scrolltolower="scrolls" scroll-y :style="pageScrollHeight">
 			<view style="margin-top: 50px;">
-				<myList :storeList="storeList" @hanlder="goToStore" :loading="loading" :over="over">
-				</myList>
+				<businList :storeList="storeList" @hanlder="goToStore" :loading="loading" :over="over">
+				</businList>
 			</view>
 		</scroll-view>
 		<!-- 商家列表 结束-->
@@ -83,11 +83,11 @@
 </template>
 
 <script>
-	import myList from "../../components/list/list.vue";
+	import businList from "./components/businList.vue";
 	export default {
 		// 引入组件
 		components: {
-			myList
+			businList
 		},
 		/*
 		初始化数据

@@ -2,13 +2,9 @@
   "pages": [
     "pages/home/home",
     "pages/store/index",
-    "pages/index/store",
     "pages/order/pay",
     "pages/order/preview",
-    "pages/home/paymentest",
-    "pages/home/payment",
     "pages/home/location",
-    "pages/home/store",
     "pages/home/morestore",
     "pages/home/search",
     "pages/order/home",
@@ -19,9 +15,6 @@
     "pages/user/address/address",
     "pages/user/address/addAddress",
     "pages/user/address/fixAddress",
-    "pages/user/address",
-    "pages/user/addAddress",
-    "pages/user/fixAddress",
     "pages/user/map",
     "pages/user/city",
     "pages/user/favor",
@@ -68,6 +61,7 @@
     }
   },
   "usingComponents": {
-    "cu-custom": "/colorui/components/cu-custom"
+    "cu-custom": "/colorui/components/cu-custom",
+    "home-load": "/components/element/loading"
   }
 }

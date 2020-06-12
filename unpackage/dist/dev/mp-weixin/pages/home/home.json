@@ -1,6 +1,11 @@
 {
   "navigationBarTitleText": "校园外卖",
   "usingComponents": {
-    "my-list": "/components/list/list"
+    "busin-list": "/pages/home/components/businList",
+    "griad-list": "/pages/home/components/griadList",
+    "banners": "/pages/home/components/banners",
+    "title": "/pages/home/components/title",
+    "preference": "/pages/home/components/preference",
+    "special": "/pages/home/components/special"
   }
 }

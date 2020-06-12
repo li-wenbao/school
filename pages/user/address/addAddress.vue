@@ -102,8 +102,7 @@
 				this.tag = value;
 			},
 			formSubmit: function(e) {
-				var data = e.detail.value;
-				
+				var data = e.detail.value;				
 				//参数校验
 				let tel = data.tel
 				let username = data.username

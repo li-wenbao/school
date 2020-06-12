@@ -1,0 +1,24 @@
+
+.prefer-dis.data-v-657a6f74 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+}
+.prefer-view.data-v-657a6f74 {
+	height: 256rpx;
+	width: 300rpx;
+	padding: 0 8rpx;
+}
+.prefer-view image.data-v-657a6f74 {
+	width: 300rpx;
+	height: 186rpx;
+	/* max-height: 200upx; */
+	border-radius: 8rpx;
+}
+.prefer-dis view.data-v-657a6f74:nth-child(2) {
+	padding: 0 7rpx !important;
+}
+

@@ -1,14 +1,10 @@
 <template>
 	<view class="page">
 		<cu-custom :bgColor="'bg-blue'" :isBack="false">
-			<block slot="backText"></block>
 			<block slot="content">
 				<!-- #ifdef MP-WEIXIN -->
 				校园外卖
 				<!-- #endif -->
-			</block>
-			<block slot="right">
-				<view class="action"></view>
 			</block>
 		</cu-custom>
 		<!-- 顶部导航开始 -->
@@ -29,75 +25,28 @@
 		<!-- 顶部导航结束 -->
 		<scroll-view @scroll="pageScroll" :style="pageScrollHeight" :scroll-y="true" :scroll-into-view="toStore">
 			<view class="bg-white">
-				<view class="cu-list grid no-border col-4">
-					<view class="cu-item" v-for="(item,index) in cuIconList" :key="index" :data-id="item.name" @click="goToMoreStore">
-						<image style="height:70rpx" :src="item.url" mode="aspectFit" />
-						<text>{{item.name}}</text>
-					</view>
-				</view>
+				<!-- 九宫格分类 -->
+				<GriadList :cuIconList="cuIconList" @goToMoreStore="goToMoreStore"></GriadList>
 				<view class="padding-lr">
 					<!-- 轮播图开始 -->
-					<swiper class="swiper" :class="dotStyle?'square-dot':'round-dot'" :indicator-dots="true" :circular="true"
-					 :autoplay="true" interval="4000" duration="1000">
-						<swiper-item v-for="(item,index) in swiperList" :key="index">
-							<view style="padding:0 5rpx">
-								<image style="height:200rpx;width:680rpx;border-radius:20rpx;overflow:hidden;" :src="item.url" mode="scaleToFill"
-								 v-if="item.type=='image'" />
-							</view>
-						</swiper-item>
-					</swiper>
+					<Banners :swiperList="swiperList"></Banners>
 					<!-- 轮播图结束 -->
 					<!-- 为你优选开始 -->
-					<view class="flex justify-between align-center margin-top">
-						<view class="text-black text-bold text-sxl">为你优选</view>
-						<view @click="goToMoreStore" data-id="为你优选">
-							<text class="check-more">更多</text>
-							<text class="cuIcon-right"></text>
-						</view>
-					</view>
-					<view class="flex padding-tb-sm justify-between">
-						<view v-for="(item,index) in  cateList" :key="index" :data-id="item.id" @click="goToStore">
-							<view class style="width:210rpx;height:180rpx;overflow: hidden;">
-								<image style="width:210rpx;height:180rpx;border-radius:8rpx; " mode="scaleToFill" lazy-load="true" :src="item.url" />
-							</view>
-							<view>
-								<view class="text-cut text-xsl margin-xs margin-left-none margin-right-none" style="width:210rpx;">{{item.name}}</view>
-								<view class="text-grey text-sm">好评率{{item.rate}}%</view>
-							</view>
-						</view>
-					</view>
+					<Title @goToMore="goToMoreStore" title="为你优选" showMore="true" titleData="为你优选"></Title>
+					<Preference :cateList="cateList" @goToStore="goToStore"></Preference>
 					<!-- 为你优选结束 -->
 					<!-- 今日特价开始 -->
-					<view class="flex justify-between align-center">
-						<view class="text-black text-bold text-sxl">今日特价</view>
-						<view @click="goToMoreStore" data-id="今日特价">
-							<text>更多</text>
-							<text class="cuIcon-right"></text>
-						</view>
-					</view>
-					<view class="flex padding-tb-sm justify-between">
-						<view v-for="(item,index) in  discountList" :key="index" :data-id="item.id" @click="goToStore">
-							<view class style="width:210rpx;height:180rpx;overflow: hidden;">
-								<image style="width:210rpx;height:180rpx;border-radius:8rpx; " mode="scaleToFill" lazy-load="true" :src="item.imgUrl" />
-							</view>
-							<view>
-								<view class="text-cut text-black text-bold text-xsl margin-xs margin-left-none margin-right-none" style="width:210rpx;">{{item.name}}</view>
-								<view class="text-grey">
-									<text class="text-price text-orange margin-right-sm">{{item.bargain}}</text>
-									<text class="text-price text-grey text-strikethrough">{{item.price}}</text>
-								</view>
-							</view>
-						</view>
-					</view>
-					<!-- 今日特价结束 -->
-					<view class="flex justify-between margin-top">
-						<view class="text-black text-bold text-sxl">附近商家</view>
-					</view>
+					<Title @goToMore="goToMoreStore" title="今日特价" showMore="true" titleData="今日特价"></Title>
+					<Special :discountList="discountList" @goToStore="goToStore"></Special>
 				</view>
 			</view>
-
+			<!-- 今日特价结束 -->
+			<view class="padding-lr">
+				<Title @goToMore="goToMoreStore" title="附近商家"></Title>
+			</view>
 			<!-- 筛选条件框 -->
-			<view id="nav"  :catchtouchmove="true" class="bg-white flex justify-between align-center padding-tb-sm padding-lr solids-bottom" style="height:40px;z-index:9999;">
+			<view id="nav" :catchtouchmove="true" class="bg-white flex justify-between align-center padding-tb-sm padding-lr solids-bottom"
+			 style="height:40px;z-index:9999;">
 				<view class="flex justify-start">
 					<view style="min-width:7em" @tap="showModal" data-target="sort">
 						{{synthesize}}
@@ -161,33 +110,56 @@
 				</view>
 			</view>
 			<scroll-view class="bg-white" @scrolltolower="scrolltolower" :style="storeScrollHeight" :scroll-y="isScroll">
-				<myList :storeList="storeList" @hanlder="goToStore" :loading="loading" :over="over">
-				</myList>
+				<businList :storeList="storeList" @hanlder="goToStore" :imgurl="imgurl" :loading="loading" :over="over">
+				</businList>
 			</scroll-view>
 		</scroll-view>
+		<!-- loading -->
+		<home-load v-if="efinition"></home-load>
 	</view>
 </template>
 
 <script>
-	import myList from "../../components/list/list.vue";
+	import businList from "./components/businList.vue"; // 附近商家列表
+	import GriadList from "./components/griadList.vue" //九宫格分类
+	import Banners from "./components/banners.vue" //广告轮播图 
+	import Title from "./components/title.vue" // 标题
+	import Preference from "./components/preference.vue" //为您优选
+	import Special from "./components/special.vue" //今日特价
 	import Json from '../../json';
 	// 引入接口
-	import {listing} from '../../api/api.js'
+	import {
+		listing
+	} from '../../api/api.js'
 	// 引入请求地址
-	import {getShopAll,startingurl} from '../../api/request.js'
+	import {
+		getAll,
+		startingurl,
+		imgurl,
+
+	} from '../../api/request.js'
 	export default {
 		// 引入组件
 		components: {
-			myList
+			businList, // 商家列表
+			GriadList, //九宫格
+			Banners, //广告轮播图 
+			Title, //标题 
+			Preference, //优选
+			Special //今日特价
 		},
-
 		/*
 		初始化数据
 		*/
 		data() {
 			return {
-				CustomBar: this.CustomBar,
+				// 整个页面的loading
+				efinition: true,
 
+				loading: false,
+				over: false,
+				imgurl: "",
+				CustomBar: this.CustomBar,
 				isScroll: false,
 				scrollTop: 0,
 				isLocation: false,
@@ -205,45 +177,44 @@
 				synthesize: "排序",
 				// selectType;//1-距离 2-评分 3-起送价  4-月销量
 				// type;//0-高  1-低
-				sortList: [
-					{
+				sortList: [{
 						"name": "距离近到远",
-						"selectType":1,
+						"selectType": 1,
 						"type": 0
 					},
 					{
 						"name": "距离远到近",
-						"selectType":1,
+						"selectType": 1,
 						"type": 1
 					},
 					{
 						"name": "评分高到低",
-						"selectType":2,
+						"selectType": 2,
 						"type": 0
 					},
 					{
 						"name": "评分低到高",
-						"selectType":2,
+						"selectType": 2,
 						"type": 1
 					},
 					{
 						"name": "起送价低到高",
-						"selectType":3,
+						"selectType": 3,
 						"type": 0
 					},
 					{
 						"name": "起送价高到低",
-						"selectType":3,
+						"selectType": 3,
 						"type": 1
 					},
 					{
 						"name": "月销量高到低",
-						"selectType":4,
+						"selectType": 4,
 						"type": 0
 					},
 					{
 						"name": "月销量低到高",
-						"selectType":4,
+						"selectType": 4,
 						"type": 1
 					}
 				],
@@ -251,8 +222,7 @@
 				// 多选
 				screendata: [{
 					"title": "商家特色(可多选)",
-					"datas": [
-						{
+					"datas": [{
 							"id": 1,
 							"sign": 'deliver',
 							"name": '0元起送'
@@ -291,9 +261,6 @@
 				scrnum: -1,
 				// 接收筛选的对象
 				multiobj: {},
-
-				loading: false,
-				over: false,
 				count: 0
 			};
 		},
@@ -337,14 +304,19 @@
 					console.log("筛选距离:", res.top);
 					this.scrollTop = res.top;
 				}).exec();
+
+			// loading取消
+			this.efinition = false
 			// 数据请求
-			this.getCurLocation();
-			this.getCuIconList();
-			this.getCatelist();
-			this.getStoreList();
-			this.getSwiperList();
-			this.getDiscountList()
-			this.preference()
+			setTimeout(() => {
+				this.getCurLocation();
+				this.getCuIconList();
+				this.getCatelist();
+				this.getStoreList();
+				this.getSwiperList();
+				this.getDiscountList()
+				this.preference()
+			}, 3000)
 		},
 		onShow: function() {
 			if (
@@ -394,25 +366,39 @@
 				// this.storeList = Json.storelist
 				// getShopAll
 			},
-			
+
 			preference() {
+				// console.log("PPPPPPPPPPPP",getAll)
 				let data = {
-					schoolCode:10673,
+					schoolCode: 10673,
+					// userExtId:3,
+					pageNum: 1,
+					pageSize: 10,
 					// type: 'myorder',
 					// openid: this.openid
 				}
 				// 批量并发请求多个接口，
 				//Promise.all =>可以并发请求多个接口。并且同时得到多个接口的数据
-				Promise.all([listing(getShopAll,data)])
+				Promise.all([listing(getAll, data)])
 					.then((res) => {
-						// 商家列表
-						this.storeList = res[0].data.data
+						console.log("res", JSON.stringify(res))
+						// 附近商家列表
+						this.imgurl = imgurl
+						if (res[0].data.length === 0) {
+							this.over = false;
+							uni.showToast({
+								title: "没有更多数据了~",
+								icon: "none"
+							})
+							return
+						}
+						this.storeList = [...this.storeList, ...res[0].data]
 					})
 					.catch((err) => {
 						console.log(err)
 					})
 			},
-			
+
 			// 列表数据
 			getSwiperList: function() {
 				this.swiperList = Json.swiperList
@@ -429,16 +415,16 @@
 			},
 			//跳转至更多商家店铺
 			goToMoreStore(e) {
-				//console.log("P++++", e.currentTarget.dataset);
+				// console.log("P++++", e.currentTarget.dataset);
 				uni.navigateTo({
 					url: "/pages/home/morestore?id=" + e.currentTarget.dataset.id
 				});
 			},
 			//跳转至商家店铺
 			goToStore(e) {
+				console.log("id++++", e);
 				uni.navigateTo({
-					// url: "/pages/home/store?id=" + e.currentTarget.dataset,
-					url: "/pages/store/index?id=" + e.currentTarget.dataset
+					url: "/pages/store/index?id=" + e.currentTarget.dataset.id
 				});
 			},
 			showModal(e) {
@@ -452,13 +438,13 @@
 				this.toStore = null;
 				this.modalName = null;
 			},
-			
+
 			//用户选择销量最高
 			salHselect(e) {
 				// this.toStore = "nav";
 				uni.pageScrollTo({
 					scrollTop: this.scrollTop + this.CustomBar + 2,
-					
+
 				})
 				this.sortCur = e.currentTarget.dataset.id;
 				uni.showToast({
@@ -492,15 +478,15 @@
 					selectType,
 					type
 				}
-				listing(startingurl,Data)
-				.then((res)=>{
-					console.log("排序请求数据",res)
-					// 存储到vuex数据仓库
-					// this.$store.commit('screenmuta',res.data)
-				})
-				.catch((err)=>{
-					console.log(err)
-				})
+				listing(startingurl, Data)
+					.then((res) => {
+						console.log("排序请求数据", res)
+						// 存储到vuex数据仓库
+						// this.$store.commit('screenmuta',res.data)
+					})
+					.catch((err) => {
+						console.log(err)
+					})
 				// console.log("触发综合排序请求打出参数:+", JSON.stringify(Data))
 			},
 			// 商家特色（多选）
@@ -569,21 +555,12 @@
 				// 	})
 			},
 
+			// 加载下一页
 			scrolltolower() {
-				//console.log("到底了", this.storeList);
+				console.log("到底了", this.storeList);
 				// this.getStoreList()
 				if (!this.over) {
-					if (this.count < 5) {
-						this.loading = true;
-						var _this = this;
-						setTimeout(function() {
-							_this.storeList = _this.storeList.concat(_this.storeList);
-							_this.loading = false;
-							_this.count++;
-						}, 1000);
-					} else {
-						this.over = true;
-					}
+
 				} else {
 					this.loading = false;
 				}

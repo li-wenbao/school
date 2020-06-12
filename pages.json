@@ -9,16 +9,9 @@
 				"navigationBarTitleText": "校园外卖"
 			}
 		},
-		
+		// 商品商品
 		{
 			"path": "pages/store/index",
-			"style": {
-				"navigationBarTitleText": ""
-			}
-		},
-		
-		{
-			"path": "pages/index/store",
 			"style": {
 				"navigationBarTitleText": ""
 			}
@@ -39,31 +32,10 @@
 				"navigationBarTitleText": ""
 			}
 		},
-		
-		
-		{
-			"path": "pages/home/paymentest",
-			"style": {
-				"navigationBarTitleText": ""
-			}
-		},
-
-		{
-			"path": "pages/home/payment",
-			"style": {
-				"navigationBarTitleText": ""
-			}
-		},
 		{
 			"path": "pages/home/location",
 			"style": {
 				"navigationBarTitleText": "选择收货地址"
-			}
-		},
-		{
-			"path": "pages/home/store",
-			"style": {
-				"navigationBarTitleText": ""
 			}
 		},
 		{
@@ -111,8 +83,6 @@
 				"navigationBarTitleText": ""
 			}
 		},
-		
-		
 		{
 			// 重写地址部分
 			"path": "pages/user/address/address",
@@ -128,26 +98,6 @@
 		},
 		{
 			"path": "pages/user/address/fixAddress",
-			"style": {
-				"navigationBarTitleText": ""
-			}
-		},
-		
-		
-		{
-			"path": "pages/user/address",
-			"style": {
-				"navigationBarTitleText": ""
-			}
-		},
-		{
-			"path": "pages/user/addAddress",
-			"style": {
-				"navigationBarTitleText": ""
-			}
-		},
-		{
-			"path": "pages/user/fixAddress",
 			"style": {
 				"navigationBarTitleText": ""
 			}

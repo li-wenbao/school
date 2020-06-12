@@ -1,9 +1,9 @@
 
-.ball.data-v-07165bc1 {
+.ball.data-v-75fefc54 {
 	position: fixed;
 	z-index:99999;
 }
-.ball .inner.data-v-07165bc1 {
+.ball .inner.data-v-75fefc54 {
 	background: #ff5722;
 	width: 15px;
 	height: 15px;
